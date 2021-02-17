@@ -11,9 +11,11 @@ export default class ClientsRepository implements IClientsRepository{
         this.clientsRepository = getRepository(Clients)
     }
 
-    public async create({nome,email,cpf,sexo}:ICreateClientDTO):Promise<Clients | undefined>{
+    public async create({nome,email,cpf,sexo}:ICreateClientDTO):Promise<Clients>{
         const client = this.clientsRepository.create({nome,email,cpf,sexo})
+        
         await this.clientsRepository.save(client)
+        
         return client
     }
 
@@ -22,16 +24,16 @@ export default class ClientsRepository implements IClientsRepository{
     }
 
     public async findById(id:string):Promise<Clients | undefined>{
-        const client = this.clientsRepository.findOne(id)
+        const client = await this.clientsRepository.findOne(id)
         return client
     }
     public async findByEmail(email:string):Promise<Clients | undefined>{
-        const client = this.clientsRepository.findOne({where:email})
+        const client = await this.clientsRepository.findOne({where:{email}})
         return client
     }
 
     public async findAll():Promise<Clients[]>{
-        const clients = this.clientsRepository.find()
+        const clients = await this.clientsRepository.find()
         return clients
     }
 

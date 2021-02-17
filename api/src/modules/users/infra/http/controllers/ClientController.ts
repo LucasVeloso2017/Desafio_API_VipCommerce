@@ -13,31 +13,32 @@ export default class ClientController{
         const {nome,email,cpf,sexo} = request.body
 
         const containerClient = container.resolve(CreateClientsService)
-
-        const client = containerClient.execute({
+        
+        const client = await containerClient.execute({
             nome,email,cpf,sexo
         })
 
-        return response.json(classToClass(client))
+        return response.json(client)
+        
     }
-    
+
     public async show(request:Request,response:Response):Promise<Response>{
         const { id } = request.params
-
+        
         const containerClient = container.resolve(FindByIdService)
 
-        const client = containerClient.execute({
+        const client = await containerClient.execute({
             id
         })
 
-        return response.json(classToClass(client))
+        return response.json(client)
     }
 
     public async index(request: Request, response: Response): Promise<Response> {
         
         const containerClient = container.resolve(FindAllClientsService)
 
-        const client = containerClient.execute()
+        const client = await containerClient.execute()
 
         return response.json(classToClass(client))
     }
@@ -47,11 +48,11 @@ export default class ClientController{
 
         const containerClient = container.resolve(DeleteByIdService)
 
-        const client = containerClient.execute({
+        const client = await containerClient.execute({
             id
         })
 
-        return response.json(classToClass(client))
+        return response.json(client)
     }
 
     public async update(request: Request, response: Response): Promise<Response> {
@@ -60,10 +61,10 @@ export default class ClientController{
 
         const containerClient = container.resolve(PutClientService)
 
-        const client = containerClient.execute({
+        const client = await containerClient.execute({
             id,nome,email,cpf,sexo
         })
 
-        return response.json(classToClass(client))
+        return response.json(client)
     }
 }

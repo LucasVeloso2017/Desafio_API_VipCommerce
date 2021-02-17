@@ -23,7 +23,7 @@ export default class CreateClientsService{
         if(checkExistUser){
             throw new AppError('This user already exists')
         }
-
+        
         const client = this.clientsRepository.create({
             nome,email,cpf,sexo
         })

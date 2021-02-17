@@ -4,6 +4,6 @@ import ClientsRoutes from '@modules/users/infra/http/routes/clients.routes'
 
 const routes = Router()
 
-routes.use('/clients',ClientsRoutes)
+routes.use('/clientes',ClientsRoutes)
 
 export default routes

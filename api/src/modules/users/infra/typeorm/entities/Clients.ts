@@ -1,4 +1,4 @@
-import { Entity,Column,PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm'
+import { Entity,Column,PrimaryGeneratedColumn} from 'typeorm'
 
 @Entity('clients')
 export default class Clients{
@@ -10,13 +10,13 @@ export default class Clients{
     nome: string
 
     @Column()
-    email: string
+    fabricacao: string
 
     @Column()
-    cpf: string
+    tamanho: string
 
     @Column()
-    sexo: string
+    valor: string
     
 }
 

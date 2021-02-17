@@ -15,6 +15,7 @@ export default class FindByIdService{
     ){}
 
     public async execute({id}:Request): Promise<Clients | undefined>{
+        console.log('service',id)
         const client = await this.clientsRepository.findById(id)
 
         if(!client){
