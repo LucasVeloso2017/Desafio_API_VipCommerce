@@ -6,6 +6,7 @@ export default interface IClientsRepository{
     create(data:ICreateClientDTO):Promise<Clients | undefined>
     save(client:Clients):Promise<Clients>
     findById(id:string):Promise<Clients | undefined>
+    findByEmail(email:string):Promise<Clients | undefined>
     findAll():Promise<Clients[]>
     deleteById(id:string):Promise<Clients | undefined>
 }

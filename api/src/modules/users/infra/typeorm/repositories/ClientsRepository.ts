@@ -25,6 +25,10 @@ export default class ClientsRepository implements IClientsRepository{
         const client = this.clientsRepository.findOne(id)
         return client
     }
+    public async findByEmail(email:string):Promise<Clients | undefined>{
+        const client = this.clientsRepository.findOne({where:email})
+        return client
+    }
 
     public async findAll():Promise<Clients[]>{
         const clients = this.clientsRepository.find()
