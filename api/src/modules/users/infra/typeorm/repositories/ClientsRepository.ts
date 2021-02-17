@@ -12,7 +12,8 @@ export default class ClientsRepository implements IClientsRepository{
     }
 
     public async create({nome,email,cpf,sexo}:ICreateClientDTO):Promise<Clients>{
-        const client = this.clientsRepository.create({nome,email,cpf,sexo})
+        const data = {nome,email,cpf,sexo}
+        const client = this.clientsRepository.create(data)
         
         await this.clientsRepository.save(client)
         
@@ -24,6 +25,8 @@ export default class ClientsRepository implements IClientsRepository{
     }
 
     public async findById(id:string):Promise<Clients | undefined>{
+        console.log('repo',id)
+
         const client = await this.clientsRepository.findOne(id)
         return client
     }
